@@ -13,7 +13,7 @@ language: go
 # These will both be unnecessary when Go 1.13 lands.
 env:
   - GO111MODULE=on
-  - GOFLAGS='-mod vendor'
+#  - GOFLAGS='-mod vendor'
 
 # You don't need to test on very old versions of the Go compiler. It's the user's
 # responsibility to keep their compiler up to date.
@@ -26,7 +26,8 @@ git:
 
 # Skip the install step. Don't `go get` dependencies. Only build with the code
 # in vendor/
-install: true
+install:
+  go mod tidy
 
 # Don't email me the results of the test runs.
 notifications:
@@ -35,8 +36,8 @@ notifications:
 # Anything in before_script that returns a nonzero exit code will flunk the
 # build and immediately stop. It's sorta like having set -e enabled in bash.
 # Make sure golangci-lint is vendored.
-before_script:
-  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
+#before_script:
+#  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
 
 # script always runs to completion (set +e). If we have linter issues AND a
 # failing test, we want to see both. Configure golangci-lint with a
