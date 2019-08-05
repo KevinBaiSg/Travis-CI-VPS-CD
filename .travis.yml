@@ -24,7 +24,7 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_c35b3785930d_key -iv $encrypted_c35b3785930d_iv
     -in org.travis-ci.enc -out ~/.ssh/org.travis-ci -d
   - chmod 600 ~/.ssh/org.travis-ci
-  - echo -e "Host $DEPLOY_ADDRESS\n\tHostName $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" > ~/.ssh/config
+  - echo -e "Host $DEPLOY_ADDRESS\n\tHostName $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
 #  - echo -e "Host $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
 
 addons:
