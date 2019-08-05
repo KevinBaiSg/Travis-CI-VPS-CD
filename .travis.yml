@@ -20,7 +20,7 @@ notifications:
 addons:
   ssh_known_hosts: $DEPLOY_ADDRESS
 
-#before_script:
+before_script:
   - go install github.com/golangci/golangci-lint/cmd/golangci-lint
 
 before_install:
