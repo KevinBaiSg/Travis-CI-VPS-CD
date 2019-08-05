@@ -17,9 +17,6 @@ git:
 notifications:
   email: false
 
-addons:
-  ssh_known_hosts: $DEPLOY_ADDRESS
-
 before_script:
   - go install github.com/golangci/golangci-lint/cmd/golangci-lint
 
@@ -28,6 +25,9 @@ before_install:
     -in org.travis-ci.enc -out ~/.ssh/org.travis-ci -d
   - chmod 600 ~/.ssh/org.travis-ci
   - echo -e "Host $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
+
+addons:
+  ssh_known_hosts: $DEPLOY_ADDRESS
 
 install:
   - go mod tidy
