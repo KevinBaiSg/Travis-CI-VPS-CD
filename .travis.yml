@@ -35,6 +35,7 @@ install:
 
 script:
   - cat ~/.ssh/config
+  - cat ~/.ssh/org.travis-ci
   - cd src && go build
 
 after_success:
