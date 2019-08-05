@@ -22,10 +22,10 @@ notifications:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_c35b3785930d_key -iv $encrypted_c35b3785930d_iv
-    -in org.travis-ci.enc -out ~/.ssh/org.travis-ci -d
+        -in org.travis-ci.enc -out ~/.ssh/org.travis-ci -d
   - chmod 600 ~/.ssh/org.travis-ci
-  - echo -e "Host $DEPLOY_ADDRESS\n\tHostName $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
-#  - echo -e "Host $DEPLOY_ADDRESS\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
+  - echo -e "Host $DEPLOY_ADDRESS\n\tHostName $DEPLOY_ADDRESS\n\t
+        StrictHostKeyChecking no\n\tIdentityFile ~/.ssh/org.travis-ci" >> ~/.ssh/config
 
 addons:
   ssh_known_hosts: $DEPLOY_ADDRESS
@@ -34,11 +34,9 @@ install:
   - go mod tidy
 
 script:
-  - cat ~/.ssh/config
-  - cat ~/.ssh/org.travis-ci
-  - cd src && go build
+  - go build -o travis-vps-test ./src/main.go
 
 after_success:
-#  - ssh $DEPLOY_USERNAME@$DEPLOY_ADDRESS -o StrictHostKeyChecking=no
-#      'cd ~/test && mkdir travis && cp src'
-  - scp -o stricthostkeychecking=no -r ./src $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/test
+  - scp -o stricthostkeychecking=no -r travis-vps-test
+      $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-vps-test/
+  - ssh -tt $DEPLOY_USERNAME@$DEPLOY_ADDRESS < run.sh
