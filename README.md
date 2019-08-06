@@ -41,8 +41,8 @@ before_install:
 再看：
 ```yaml
 after_success:
-  - scp -o stricthostkeychecking=no -r travis-vps-test
-      $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-vps-test/
+  - scp -o stricthostkeychecking=no -r travis-ci-vps-cd
+      $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-ci-vps-cd/
   - ssh -tt $DEPLOY_USERNAME@$DEPLOY_ADDRESS < run.sh
 ```
 在 `after_success` 处其实就是 ssl 登录到服务器中部署服务了。

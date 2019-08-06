@@ -15,7 +15,7 @@ git:
   depth: 1
 
 notifications:
-  email: false
+  email: true
 
 #before_script:
 #  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
@@ -34,9 +34,9 @@ install:
   - go mod tidy
 
 script:
-  - go build -o travis-vps-test ./src/main.go
+  - go build -o travis-ci-vps-cd-new ./src/main.go
 
 after_success:
-  - scp -o stricthostkeychecking=no -r travis-vps-test
-      $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-vps-test/
+  - scp -o stricthostkeychecking=no travis-ci-vps-cd-new Procfile
+      $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-ci-vps-cd/
   - ssh -tt $DEPLOY_USERNAME@$DEPLOY_ADDRESS < run.sh
