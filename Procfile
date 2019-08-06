@@ -1,1 +1,1 @@
-trevis-ci-vps-cd: ./trevis-ci-vps-cd
+travis-ci-vps-cd: ./travis-ci-vps-cd
