@@ -3,11 +3,11 @@
 毕竟觉得个人的项目不需要这样的要求，但是最近想着把这部分功能实现，其实也是可以省下不少时间。
 
 # 思路    
-Github---->Travis-ci---->VPS
+**Github---->Travis-ci---->VPS**
 前边部分官方已经提供了完好的解决方案，我们只需要把第二部分配置通过即可。其实第二部分的主要思路就是让 
-Travis-ci 使用ssl登录到我们的 VPS 中部署好服务。
+Travis-ci 使用ssl登录到我们的 VPS 中部署好服务。  
 当然这面临到一个问题，Travis-ci 怎么来访问 VPS, 就是借助 ssl 登录。但是这会引申到另一个问题，怎么
-解决ssl登录秘钥的问题。本例中，使用到了travis的一个工具。   
+解决ssl登录秘钥的问题。本例中，使用到了travis的一个工具。    
 
 ```bash
 $ brew install travis 
@@ -15,7 +15,7 @@ $ travis login --auto
 $ travis encrypt-file ~/.ssh/org.travis-ci --add 
 ```
 
-通过上述指令安装了 travis，并且登录到 travis-ci账户中，然后使用encrypt-file工具加密了之前配置好秘钥。       
+通过上述指令安装了 travis，并且登录到 travis-ci账户中，然后使用encrypt-file工具加密了之前配置好秘钥。         
 
 `关于org.travis-ci是登录vps的秘钥，这部分大家可以网上查找相关于ssh登录的部分`
 
