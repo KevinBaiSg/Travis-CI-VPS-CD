@@ -1,3 +1,6 @@
+Travis-CI-VPS-CD[![Build Status][travis-image]][travis-url]
+================
+
 # 说明
 本人之前就借助免费的 Github 和 Travis CI 实现 CI 的功能，但是一直没有关注 CD 部分，
 毕竟觉得个人的项目不需要这样的要求，但是最近想着把这部分功能实现，其实也是可以省下不少时间。
@@ -43,3 +46,11 @@ after_success:
   - ssh -tt $DEPLOY_USERNAME@$DEPLOY_ADDRESS < run.sh
 ```
 在 `after_success` 处其实就是 ssl 登录到服务器中部署服务了。
+
+
+[travis-image]: https://api.travis-ci.org/KevinBaiSg/travis-vps-ci-cd.svg?branch=master
+[travis-url]: https://travis-ci.org/KevinBaiSg/travis-vps-ci-cd
+
+
+
+
