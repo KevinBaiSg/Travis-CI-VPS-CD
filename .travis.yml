@@ -34,9 +34,9 @@ install:
   - go mod tidy
 
 script:
-  - go build -o travis-ci-vps-cd-new ./src/main.go
+  - go build -o travis-cd-new ./src/main.go
 
 after_success:
-  - scp -o stricthostkeychecking=no travis-ci-vps-cd-new Procfile
+  - scp -o stricthostkeychecking=no travis-cd-new Procfile
       $DEPLOY_USERNAME@$DEPLOY_ADDRESS:~/travis-ci-vps-cd/
   - ssh -tt $DEPLOY_USERNAME@$DEPLOY_ADDRESS < run.sh
