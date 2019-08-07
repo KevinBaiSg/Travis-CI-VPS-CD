@@ -1,4 +1,4 @@
-module github.com/KevinBaiSg/travis-ci-cd-test
+module github.com/KevinBaiSg/Travis-CI-VPS-CD
 
 go 1.12
 

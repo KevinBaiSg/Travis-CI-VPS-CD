@@ -1,13 +1,16 @@
-package main
+package Travis_CI_VPS_CD
 
 import "github.com/gin-gonic/gin"
 
-func main() {
+
+func Main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"message": "pong v:0.0.1",
 		})
 	})
-	r.Run()
+	if err := r.Run(); err != nil {
+		return
+	}
 }
