@@ -48,8 +48,8 @@ after_success:
 在 `after_success` 处其实就是 ssl 登录到服务器中部署服务了。
 
 
-[travis-image]: https://api.travis-ci.org/KevinBaiSg/travis-vps-ci-cd.svg?branch=master
-[travis-url]: https://travis-ci.org/KevinBaiSg/travis-vps-ci-cd
+[travis-image]: https://travis-ci.org/KevinBaiSg/Travis-CI-VPS-CD.svg?branch=master
+[travis-url]: https://travis-ci.org/KevinBaiSg/Travis-CI-VPS-CD
 
 
 
